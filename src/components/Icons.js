@@ -71,7 +71,7 @@ const Icons = ({ family, name, color, size, ...props }) => {
     <Family
       name={name || 'help-outline'}
       color={color || '#000'}
-      size={size || 20}
+      size={size || 18}
       {...props}
     />
   );

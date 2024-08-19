@@ -27,12 +27,10 @@ const CustomInput = ({
   autoFocus,
   ref,
   marginTop,
-  withLabel,
+  label,
   containerStyle,
   inputStyle,
-  height,
-  width,
-  labelIcon,
+  icon,
 }) => {
   //
   const isError = ![undefined, null, true, ''].includes(error);
@@ -52,12 +50,11 @@ const CustomInput = ({
 
   return (
     <>
-      {withLabel && (
+      {label && (
         <CustomText
-          label={withLabel}
-          marginBottom={8}
-          fontSize={14}
-          fontFamily={fonts.semiBold}
+          label={label}
+          marginBottom={6}
+          fontFamily={fonts.medium}
           color={colors.black}
           marginTop={marginTop}
         />
@@ -66,9 +63,7 @@ const CustomInput = ({
         style={[
           styles.mainContainer,
           {
-            marginBottom: error ? 2 : 15,
-            height: multiline ? 150 : height,
-            width: width,
+            marginBottom: error ? 2 : 10,
             borderColor: isError
               ? colors.red
               : isFocused
@@ -77,6 +72,7 @@ const CustomInput = ({
           },
           containerStyle,
         ]}>
+        {icon && <View style={{ marginRight: 10, top: 2 }}>{icon}</View>}
         <TextInput
           ref={ref}
           placeholder={placeholder}
@@ -103,7 +99,7 @@ const CustomInput = ({
             onPress={() => setHidePass(!hidePass)}>
             <Icons
               name={!hidePass ? 'eye' : 'eye-off'}
-              color={colors.black}
+              color={colors.grey1}
               size={18}
               family="Feather"
             />
@@ -124,8 +120,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: 15,
     borderWidth: 1,
-    height: 52,
-    borderRadius: 10,
+    height: 44,
+    borderRadius: 17,
     width: '100%',
     flexDirection: 'row',
     paddingVertical: 10,
@@ -133,7 +129,7 @@ const styles = StyleSheet.create({
   input: {
     padding: 0,
     margin: 0,
-    fontFamily: fonts.medium,
+    fontFamily: fonts.regular,
     fontSize: 15,
     color: colors.black,
     flex: 1,

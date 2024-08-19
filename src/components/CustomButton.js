@@ -36,7 +36,7 @@ const CustomButton = ({
         <CustomText
           label={title}
           color={color || colors.white}
-          fontFamily={fonts.semiBold}
+          fontFamily={fonts.medium}
         />
       )}
     </TouchableOpacity>
@@ -48,7 +48,7 @@ export default CustomButton;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primaryColor,
-    borderRadius: 17,
+    borderRadius: 15,
     height: 45,
     justifyContent: 'center',
     alignItems: 'center',

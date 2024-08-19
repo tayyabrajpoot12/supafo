@@ -14,7 +14,7 @@ const Header = ({ title }) => {
       <TouchableOpacity
         style={styles.arrowBtn}
         onPress={() => (navigation.canGoBack() ? navigation.goBack() : null)}>
-        <Icons name="arrow-left" size={22} family={'Feather'} />
+        <Icons name="arrow-left" size={24} family={'Feather'} />
       </TouchableOpacity>
       <View style={styles.textBox}>
         <CustomText label={title} fontFamily={fonts.medium} fontSize={18} />
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     padding: 8,
     position: 'absolute',
-    left: 20,
+    left: 15,
   },
   textBox: {
     flex: 1,
