@@ -20,3 +20,7 @@ export { default as FbIcon } from './fb.svg';
 export { default as LockIcon } from './lock.svg';
 export { default as ForgotIcon } from './forgot.svg';
 export { default as ForgotSuccess } from './forgotSuccess.svg';
+export { default as Intro1 } from './intro1.svg';
+export { default as Intro2 } from './intro2.svg';
+export { default as Intro3 } from './intro3.svg';
+export { default as Intro4 } from './intro4.svg';

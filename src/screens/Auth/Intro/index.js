@@ -1,8 +1,8 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Animated,
   Dimensions,
+  Image,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
@@ -11,7 +11,7 @@ import {
 import { useDispatch } from 'react-redux';
 
 import fonts from '../../../assets/fonts';
-import { Images } from '../../../assets/images';
+import { Images, Intro2, Intro3, Intro4 } from '../../../assets/images';
 import CustomText from '../../../components/CustomText';
 import { setIntroSeen } from '../../../store/reducer/usersSlice';
 import { colors } from '../../../utils/colors';
@@ -23,7 +23,7 @@ const Intro = () => {
 
   const flatListRef = useRef();
   const dispatch = useDispatch();
-  const navigation = useNavigation();
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const array = [
@@ -35,19 +35,19 @@ const Intro = () => {
     },
     {
       id: 2,
-      img: Images.intro2,
+      img: Intro2,
       title:
         'Siparişlerim kısmında yer alan sana özel QR kod ile restorana gidebilir,',
     },
     {
       id: 3,
-      img: Images.intro3,
+      img: Intro3,
       title:
         'Seçmiş olduğun süpriz paketini QR kodun ile kolayca teslim alabilirsin. Afiyet olsun :)',
     },
     {
       id: 4,
-      img: Images.intro4,
+      img: Intro4,
       title:
         'Hem israfı önleyip hem de sipariş verdiğin ürünlerin teslimini almaya giderek çevre dostu yaşam tarzını kazandığın için seni tebrik ediyoruz.',
     },
@@ -60,9 +60,6 @@ const Intro = () => {
   const handleNext = () => {
     if (currentIndex == 3) {
       dispatch(setIntroSeen(true));
-      setTimeout(() => {
-        navigation.reset({ index: 0, routes: [{ name: 'AuthStack' }] });
-      }, 200);
     } else {
       setCurrentIndex(pre => parseInt(pre, 10) + 1);
     }
@@ -96,7 +93,13 @@ const Intro = () => {
         pagingEnabled
         renderItem={({ item }) => (
           <Animated.View style={styles.sliderItem}>
-            <Animated.Image style={styles.img} source={item.img} />
+            <View style={{ height: 200, marginBottom: 30, marginTop: '50%' }}>
+              {item.id === 1 ? (
+                <Image source={item.img} style={styles.img} />
+              ) : (
+                <item.img />
+              )}
+            </View>
             <CustomText
               label={item.title}
               fontSize={15}
@@ -104,7 +107,6 @@ const Intro = () => {
               textAlign="center"
               lineHeight={28}
               fontFamily={fonts.medium}
-              paddingHorizontal={40}
             />
           </Animated.View>
         )}
@@ -141,12 +143,11 @@ const styles = StyleSheet.create({
     width: width,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: 40,
   },
   img: {
     height: 200,
     width: 200,
-    resizeMode: 'stretch',
   },
   dot: {
     height: 10,

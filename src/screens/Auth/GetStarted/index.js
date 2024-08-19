@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.white,
-    marginBottom: 30,
+    marginBottom: 50,
   },
   row: {
     flexDirection: 'row',
