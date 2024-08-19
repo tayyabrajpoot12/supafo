@@ -35,6 +35,7 @@ export const Layout = ({
   refreshing,
   onRefresh,
   isRefresh,
+  isBack,
 }) => {
   //
 
@@ -50,7 +51,7 @@ export const Layout = ({
         animated={animated}
         hidden={hideBar}
       />
-      {showNavBar && <Header title={title} />}
+      {showNavBar && <Header title={title} isBack={isBack} />}
 
       <LayoutWrapper
         style={[{ flex: 1, paddingHorizontal: 22 }, layoutContainer]}

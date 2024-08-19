@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import fonts from '../../../assets/fonts';
 import { Images } from '../../../assets/images';
 import CustomInput from '../../../components/CustomInput';
@@ -39,6 +39,16 @@ const Login = () => {
       />
       <CustomButton title={'Giriş Yap'} />
       <SocialLogin />
+      <View style={styles.row}>
+        <CustomText label={'Hesabın yok mu ? '} fontFamily={fonts.semiBold} />
+        <CustomText
+          label={'Kayıt ol'}
+          fontFamily={fonts.semiBold}
+          color={colors.green}
+          textDecorationLine={'underline'}
+          onPress={() => navigation.navigate('Signup')}
+        />
+      </View>
     </Layout>
   );
 };
@@ -50,12 +60,18 @@ const styles = StyleSheet.create({
     height: 115,
     width: 80,
     alignSelf: 'center',
-    marginTop: 30,
+    marginTop: 15,
     marginBottom: 20,
   },
   forgotText: {
     alignSelf: 'flex-end',
     marginTop: 10,
-    marginBottom: 40,
+    marginBottom: 50,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
   },
 });

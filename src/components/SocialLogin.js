@@ -38,8 +38,8 @@ export default SocialLogin;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
-    marginBottom: 20,
-    marginTop: 10,
+    marginBottom: 25,
+    marginTop: 20,
   },
   line: {
     height: 1,
@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 8,
+    paddingVertical: 10,
     marginRight: 10,
-    paddingHorizontal: 8,
+    paddingHorizontal: 10,
   },
   row1: {
     flexDirection: 'row',

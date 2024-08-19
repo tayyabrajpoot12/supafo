@@ -6,16 +6,18 @@ import { colors } from '../utils/colors';
 import CustomText from './CustomText';
 import Icons from './Icons';
 
-const Header = ({ title }) => {
+const Header = ({ title, isBack = true }) => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.header}>
-      <TouchableOpacity
-        style={styles.arrowBtn}
-        onPress={() => (navigation.canGoBack() ? navigation.goBack() : null)}>
-        <Icons name="arrow-left" size={24} family={'Feather'} />
-      </TouchableOpacity>
+      {isBack && (
+        <TouchableOpacity
+          style={styles.arrowBtn}
+          onPress={() => (navigation.canGoBack() ? navigation.goBack() : null)}>
+          <Icons name="arrow-left" size={24} family={'Feather'} />
+        </TouchableOpacity>
+      )}
       <View style={styles.textBox}>
         <CustomText label={title} fontFamily={fonts.medium} fontSize={18} />
       </View>

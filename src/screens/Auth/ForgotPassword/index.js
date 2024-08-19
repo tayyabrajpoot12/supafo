@@ -1,78 +1,64 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useMemo, useState } from 'react';
-import { View } from 'react-native';
-import fonts from '../../../assets/fonts';
-import CustomButton from '../../../components/CustomButton';
-import CustomInput from '../../../components/CustomInput';
+import React from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ForgotIcon } from '../../../assets/images';
 import CustomText from '../../../components/CustomText';
+import Icons from '../../../components/Icons';
 import Layout from '../../../components/Layout';
-import { className } from '../../../global-styles';
 import { colors } from '../../../utils/colors';
-import { regEmail } from '../../../utils/constants';
 
 const ForgotPassword = () => {
   const navigation = useNavigation();
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const errorCheck = useMemo(() => {
-    return () => {
-      let newErrors = '';
-      if (!email) newErrors = 'Please enter Email address';
-      else if (!regEmail.test(email)) newErrors = 'Please enter valid email';
-      setEmailError(newErrors);
-    };
-  }, [email]);
-  useEffect(() => {
-    errorCheck();
-  }, [errorCheck]);
-
   return (
-    <Layout
-      StatusBarBg={colors.white}
-      footerComponent={
-        <View style={className('justify-center align-center flex mb-5')}>
-          <CustomText
-            label={'Remember password?'}
-            fontSize={15}
-            marginRight={5}
+    <Layout title={'Sıfırlama Yöntemi Seç'}>
+      <View style={styles.container}>
+        <ForgotIcon marginBottom={100} />
+        <TouchableOpacity
+          style={styles.btn}
+          activeOpacity={0.5}
+          onPress={() => navigation.navigate('ForgotByEmail')}>
+          <Icons
+            name={'mail'}
+            family={'IonIcons'}
+            color={colors.green}
+            size={20}
           />
-          <CustomText
-            label={'Sign in'}
-            fontFamily={fonts.semiBold}
-            fontSize={15}
-            onPress={() => navigation.navigate('Login')}
+          <CustomText label={'Email ile doğrula'} marginLeft={5} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.btn}
+          activeOpacity={0.5}
+          onPress={() => navigation.navigate('ForgotByPhone')}>
+          <Icons
+            name={'sms'}
+            family={'FontAwesome5'}
+            color={colors.green}
+            size={20}
           />
-        </View>
-      }>
-      <CustomText
-        label={'Forgot Password'}
-        fontFamily={fonts.semiBold}
-        fontSize={20}
-        marginTop={50}
-      />
-      <CustomText
-        label={
-          'Please enter the email associated with your account to reset password.'
-        }
-        marginTop={5}
-        marginBottom={25}
-      />
-      <CustomInput
-        placeholder={'Email'}
-        keyboardType={'email-address'}
-        value={email}
-        onChangeText={text => setEmail(text)}
-        error={emailError}
-      />
-      <CustomButton
-        title={'Continue'}
-        disabled={!!emailError}
-        onPress={() =>
-          navigation.navigate('VerifyOtp', { email: 'abc@gmail.com' })
-        }
-      />
+          <CustomText label={'SMS ile doğrula'} marginLeft={5} />
+        </TouchableOpacity>
+      </View>
     </Layout>
   );
 };
 
 export default ForgotPassword;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btn: {
+    borderWidth: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderColor: colors.green,
+    borderRadius: 18,
+    paddingVertical: 10,
+    marginVertical: 20,
+  },
+});

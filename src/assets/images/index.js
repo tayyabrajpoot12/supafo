@@ -17,3 +17,6 @@ export const Images = {
 export { default as GoogleIcon } from './google.svg';
 export { default as AppleIcon } from './apple.svg';
 export { default as FbIcon } from './fb.svg';
+export { default as LockIcon } from './lock.svg';
+export { default as ForgotIcon } from './forgot.svg';
+export { default as ForgotSuccess } from './forgotSuccess.svg';

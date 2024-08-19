@@ -1,54 +1,59 @@
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import fonts from '../../../assets/fonts';
 import CustomButton from '../../../components/CustomButton';
 import CustomText from '../../../components/CustomText';
 import Layout from '../../../components/Layout';
 import OTPComponent from '../../../components/OTP';
-import { className } from '../../../global-styles';
 
 const VerifyOtp = () => {
   //
 
-  const { params } = useRoute();
   const navigation = useNavigation();
 
   const [value, setValue] = useState('');
 
   return (
-    <Layout StatusBarBg="#fff">
+    <Layout title={'Tek Seferlik Kod'}>
       <CustomText
-        label={'OTP Verfication'}
-        fontFamily={fonts.bold}
-        fontSize={22}
-        marginTop={10}
+        label={'Hesabı Doğrula'}
+        fontFamily={fonts.medium}
+        fontSize={18}
+        marginTop={50}
+        alignSelf={'center'}
       />
       <CustomText
-        label={'We have sent a code to'}
-        marginTop={10}
-        fontSize={16}
-      />
-      <CustomText
-        label={params?.email}
-        fontFamily={fonts.semiBold}
-        marginBottom={25}
-        fontSize={16}
+        label={'Size gelen 6 haneli kodu girin.'}
+        fontSize={12}
+        alignSelf={'center'}
+        marginBottom={60}
       />
       <OTPComponent value={value} setValue={setValue} />
-      <CustomButton
-        title={'Continue'}
-        onPress={() => navigation.navigate('NewPassword')}
-        customStyle={className('my-7')}
-        disabled={value?.length < 4}
-      />
-      <View style={className('align-self flex')}>
-        <CustomText label={'Send code again in  '} fontFamily={fonts.medium} />
-        <CustomText label={'00:25'} fontFamily={fonts.semiBold} />
+      <View style={styles.timer}>
+        <CustomText label={'Kodu tekrar gönder '} fontFamily={fonts.medium} />
+        <CustomText label={'03:25'} fontFamily={fonts.semiBold} />
       </View>
+      <CustomButton
+        title={'Devam Et'}
+        onPress={() => navigation.navigate('NewPassword')}
+        customStyle={styles.btn}
+      />
     </Layout>
   );
 };
 
 export default VerifyOtp;
+
+const styles = StyleSheet.create({
+  btn: {
+    marginTop: 40,
+    marginBottom: 20,
+  },
+  timer: {
+    flexDirection: 'row',
+    alignSelf: 'center',
+    marginTop: 40,
+  },
+});

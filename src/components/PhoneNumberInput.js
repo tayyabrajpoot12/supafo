@@ -1,11 +1,12 @@
-import React, {useRef} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, { useRef } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import PhoneInput from 'react-native-phone-number-input';
 
 import fonts from '../assets/fonts';
-import {colors} from '../utils/colors';
+import { colors } from '../utils/colors';
+import CustomText from './CustomText';
 
-const PhoneNumberInput = ({value, setValue, valid, setValid, formData}) => {
+const PhoneNumberInput = ({ value, setValue, valid, setValid, formData }) => {
   const phoneInput = useRef(null);
 
   const checkPhoneNumber = text => {
@@ -15,16 +16,24 @@ const PhoneNumberInput = ({value, setValue, valid, setValid, formData}) => {
     phoneInput.current?.setState({
       number: sanitizedText,
     });
-    setValue({...formData, phoneNumber: sanitizedText});
+    setValue({ ...formData, phoneNumber: sanitizedText });
   };
 
   return (
     <View style={styles.wrapper}>
+      <View style={styles.row}>
+        <CustomText label={'Ülke'} fontFamily={fonts.medium} marginBottom={5} />
+        <CustomText
+          label={'Telefon Numarası'}
+          fontFamily={fonts.medium}
+          marginBottom={5}
+        />
+      </View>
       <PhoneInput
         ref={phoneInput}
         defaultValue={value}
         value={value}
-        defaultCode="QA"
+        defaultCode="TR"
         layout="second"
         placeholder={'Phone number'}
         withDarkTheme
@@ -39,12 +48,12 @@ const PhoneNumberInput = ({value, setValue, valid, setValid, formData}) => {
         disableArrowIcon
         onChangeFormattedText={text => {
           const sanitizedText = text.replace(/[^0-9+]/g, '');
-          setValue({...formData, phoneNumber: sanitizedText});
+          setValue({ ...formData, phoneNumber: sanitizedText });
         }}
-        countryPickerProps={{withAlphaFilter: false}}
+        countryPickerProps={{ withAlphaFilter: false }}
       />
       {value && !valid && (
-        <Text style={styles.error}>Enter a valid phone number</Text>
+        <Text style={styles.error}>Geçerli bir telefon numarası girin</Text>
       )}
     </View>
   );
@@ -53,7 +62,7 @@ const PhoneNumberInput = ({value, setValue, valid, setValid, formData}) => {
 const styles = StyleSheet.create({
   wrapper: {
     justifyContent: 'center',
-    marginBottom: 15,
+    marginBottom: 10,
   },
 
   error: {
@@ -65,24 +74,23 @@ const styles = StyleSheet.create({
   containerStyle: {
     backgroundColor: colors.white,
     width: '100%',
-    height: 52,
+    height: 45,
     borderRadius: 20,
   },
   textContainerStyle: {
     backgroundColor: colors.white,
     borderWidth: 1,
     borderColor: colors.lightGrey,
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
+    borderRadius: 19,
   },
   textInputStyle: {
     fontFamily: fonts.medium,
-    height: 52,
+    height: 45,
     color: colors.black,
     fontSize: 16,
   },
   codeTextStyle: {
-    fontSize: 16,
+    fontSize: 15,
     fontFamily: fonts.medium,
     color: colors.black,
   },
@@ -92,9 +100,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.lightGrey,
     backgroundColor: colors.white,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderRightWidth: 0,
+    marginRight: 13,
+    borderRadius: 19,
+    height: 45,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '65%',
   },
 });
 

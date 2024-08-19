@@ -1,106 +1,83 @@
-import { useNavigation, useRoute } from '@react-navigation/native';
-import React, { useEffect, useMemo, useState } from 'react';
-import fonts from '../../../assets/fonts';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Image, StyleSheet, View } from 'react-native';
+import { Images } from '../../../assets/images';
 import CustomButton from '../../../components/CustomButton';
 import CustomInput from '../../../components/CustomInput';
 import CustomText from '../../../components/CustomText';
+import Icons from '../../../components/Icons';
 import Layout from '../../../components/Layout';
-import { className } from '../../../global-styles';
-import { passwordRegex } from '../../../utils/constants';
+import { colors } from '../../../utils/colors';
 
 const NewPassword = () => {
-  const { params } = useRoute();
   const navigation = useNavigation();
-  const init = {
-    password: '',
-    confirmPassword: '',
-  };
-  const inits = {
-    passwordError: '',
-    confirmPasswordError: '',
-  };
-  const [state, setState] = useState(init);
-  const [errors, setErrors] = useState(inits);
-
-  const array = [
-    {
-      id: 1,
-      placeholder: 'Password',
-      label: 'Create a password  (Required)',
-      value: state.password,
-      onChange: text => setState({ ...state, password: text }),
-      error: errors?.passwordError,
-    },
-    // {
-    //   id: 1.1,
-    // },
-    {
-      id: 2,
-      placeholder: 'Confirm Password',
-      label: 'Re-enter your password  (Required)',
-      value: state.confirmPassword,
-      onChange: text => setState({ ...state, confirmPassword: text }),
-      error: errors?.confirmPasswordError,
-    },
-  ];
-
-  const errorCheck = useMemo(() => {
-    return () => {
-      let newErrors = {};
-      if (!state.password) newErrors.passwordError = 'Enter New Password';
-      else if (!passwordRegex.test(state.password))
-        newErrors.passwordError =
-          'Password must contain 1 number, 1 special character, Uppercase and 8 digits';
-      else if (!state.confirmPassword)
-        newErrors.confirmPasswordError = 'Please enter Password';
-      else if (!passwordRegex.test(state.confirmPassword))
-        newErrors.confirmPasswordError =
-          'Password must contain 1 number, 1 special character, Uppercase and 8 digits';
-      else if (state.password !== state.confirmPassword)
-        newErrors.confirmPasswordError = 'Passwords do not match';
-      setErrors(newErrors);
-    };
-  }, [state]);
-
-  useEffect(() => {
-    errorCheck();
-  }, [errorCheck]);
-
   return (
-    <Layout StatusBarBg="#fff">
-      <CustomText
-        label={'Reset Password'}
-        fontFamily={fonts.bold}
-        fontSize={20}
-        marginTop={50}
+    <Layout title={'Yeni Şifre Oluştur'}>
+      <Image source={Images.logo} style={styles.logo} />
+      <CustomInput
+        label={'Şifre'}
+        placeholder={'Şifre'}
+        icon={<Icons name={'lock'} family={'Feather'} color={colors.grey1} />}
+        secureTextEntry
       />
-      <CustomText label={'Create your eight characters password to login'} />
-      <CustomText
-        label={params?.email}
-        fontFamily={fonts.semiBold}
-        marginBottom={25}
-        fontSize={16}
-        marginTop={-20}
+      <CustomInput
+        label={'Şifre Tekrar'}
+        placeholder={'Şifre'}
+        icon={<Icons name={'lock'} family={'Feather'} color={colors.grey1} />}
+        secureTextEntry
       />
-      {array.map(item => (
-        <CustomInput
-          key={item?.id}
-          placeholder={item.placeholder}
-          value={item.value}
-          onChangeText={item.onChange}
-          error={item.error}
-          secureTextEntry
-          withLabel={item.label}
-        />
-      ))}
+      <View style={styles.box}>
+        <View style={styles.row}>
+          <View style={styles.circle} />
+          <CustomText label={'6 ile 15 karakter arasında olmalıdır.'} />
+        </View>
+        <View style={styles.row}>
+          <View style={styles.circle} />
+          <CustomText label={'Büyük harf içermeli.'} />
+        </View>
+        <View style={styles.row}>
+          <View style={styles.circle} />
+          <CustomText label={'Rakam içermeli.'} />
+        </View>
+      </View>
       <CustomButton
-        title={'Change Password'}
-        onPress={() => navigation.navigate('Login')}
-        customStyle={className('mt-5')}
-        disabled={!Object.values(errors).every(error => error === '')}
+        title={'Devam Et'}
+        onPress={() => navigation.navigate('PasswordSuccess')}
       />
     </Layout>
   );
 };
 
 export default NewPassword;
+
+const styles = StyleSheet.create({
+  logo: {
+    height: 115,
+    width: 80,
+    alignSelf: 'center',
+    marginTop: 15,
+    marginBottom: 30,
+  },
+  circle: {
+    width: 15,
+    height: 15,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: colors.green,
+    marginRight: 10,
+  },
+  row: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginTop: 4,
+  },
+  box: {
+    borderWidth: 1,
+    borderColor: colors.green,
+    borderRadius: 20,
+    paddingHorizontal: 20,
+    marginTop: 30,
+    paddingVertical: 15,
+    marginBottom: 40,
+  },
+});

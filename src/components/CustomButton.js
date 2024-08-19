@@ -48,7 +48,7 @@ export default CustomButton;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primaryColor,
-    borderRadius: 15,
+    borderRadius: 19,
     height: 45,
     justifyContent: 'center',
     alignItems: 'center',

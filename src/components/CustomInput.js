@@ -53,7 +53,7 @@ const CustomInput = ({
       {label && (
         <CustomText
           label={label}
-          marginBottom={6}
+          marginBottom={5}
           fontFamily={fonts.medium}
           color={colors.black}
           marginTop={marginTop}
@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: 15,
     borderWidth: 1,
-    height: 44,
-    borderRadius: 17,
+    height: 45,
+    borderRadius: 19,
     width: '100%',
     flexDirection: 'row',
     paddingVertical: 10,
