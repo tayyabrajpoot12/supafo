@@ -21,8 +21,8 @@ const TabIcon = ({ name, family, focused }) => (
   <Icons
     name={name}
     family={family}
-    color={focused ? colors.primaryColor : colors.grey2}
-    size={23}
+    color={focused ? colors.primaryColor : colors.black}
+    size={name === 'home' ? 25 : 22}
   />
 );
 
@@ -31,17 +31,18 @@ const TabStack = () => {
     <Tab.Navigator
       screenOptions={() => ({
         tabBarActiveTintColor: colors.primaryColor,
-        tabBarInactiveTintColor: colors.grey2,
+        tabBarInactiveTintColor: colors.black,
         tabBarStyle: styles.tabBarStyle,
         headerShown: false,
-        tabBarLabelStyle: { fontSize: 12, fontFamily: fonts.semiBold, top: -5 },
+        tabBarLabelStyle: { fontSize: 12, fontFamily: fonts.medium, top: -4 },
         tabBarHideOnKeyboard: true,
       })}>
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} name={'home'} />
+            <TabIcon focused={focused} name={'home'} family={'Foundation'} />
           ),
+          tabBarLabel: 'Anasayfa',
         }}
         name="Home"
         component={Home}
@@ -49,8 +50,9 @@ const TabStack = () => {
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon name="briefcase-outline" focused={focused} />
+            <TabIcon name="hearto" focused={focused} family={'AntDesign'} />
           ),
+          tabBarLabel: 'Favoriler',
         }}
         name="Favourites"
         component={Favourites}
@@ -58,8 +60,9 @@ const TabStack = () => {
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon name="map" family={'Feather'} focused={focused} />
+            <TabIcon name="map-pin" family={'Feather'} focused={focused} />
           ),
+          tabBarLabel: 'Keşfet',
         }}
         name="Map"
         component={MapScreen}
@@ -67,8 +70,9 @@ const TabStack = () => {
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon name="map" family={'Feather'} focused={focused} />
+            <TabIcon name="bag-outline" family={'IonIcons'} focused={focused} />
           ),
+          tabBarLabel: 'Sepet',
         }}
         name="Cart"
         component={Cart}
@@ -78,6 +82,7 @@ const TabStack = () => {
           tabBarIcon: ({ focused }) => (
             <TabIcon name="user" family="Feather" focused={focused} />
           ),
+          tabBarLabel: 'Profil',
         }}
         name="Profile"
         component={Profile}
@@ -90,11 +95,7 @@ export default TabStack;
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    height: 80,
+    height: 70,
     paddingBottom: 10,
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30,
-    elevation: 0,
-    borderTopWidth: 0,
   },
 });

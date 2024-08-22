@@ -8,9 +8,14 @@ export const Images = {
   defaultImg: require('./default.jpg'),
   noData: require('./noData.png'),
   mapPin: require('./mapPin.png'),
+  donate: require('./donate.png'),
 
   // temp images
   user: require('./user.png'),
+  food1: require('./food1.png'),
+  food2: require('./food2.jpg'),
+  food3: require('./food3.png'),
+  company1: require('./company1.png'),
 };
 
 // svgs ---------------------------
@@ -24,3 +29,5 @@ export { default as Intro1 } from './intro1.svg';
 export { default as Intro2 } from './intro2.svg';
 export { default as Intro3 } from './intro3.svg';
 export { default as Intro4 } from './intro4.svg';
+export { default as Currency } from './currency.svg';
+export { default as FilterIcon } from './filter.svg';

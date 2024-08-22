@@ -37,7 +37,10 @@ const Login = () => {
         containerStyle={styles.forgotText}
         onPress={() => navigation.navigate('ForgotPassword')}
       />
-      <CustomButton title={'Giriş Yap'} />
+      <CustomButton
+        title={'Giriş Yap'}
+        onPress={() => navigation.navigate('MainStack')}
+      />
       <SocialLogin />
       <View style={styles.row}>
         <CustomText label={'Hesabın yok mu ? '} fontFamily={fonts.semiBold} />

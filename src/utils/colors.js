@@ -14,5 +14,5 @@ export const colors = {
   disabled: 'rgba(255,255,255,0.5)',
   tabIcon: '#bfbfbf',
   authText: '#343A40',
-  orange: '#FA6E53',
+  orange: '#FF9200',
 };
