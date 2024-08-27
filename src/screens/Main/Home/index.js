@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
   FlatList,
@@ -7,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import fonts from '../../../assets/fonts';
+import { Images } from '../../../assets/images';
 import CustomText from '../../../components/CustomText';
 import Layout from '../../../components/Layout';
 import SearchBar from '../../../components/SearchBar';
@@ -14,9 +16,12 @@ import { colors } from '../../../utils/colors';
 import HomeCard from './HomeCard';
 import HomeSwiper from './HomeSwiper';
 import LocationBox from './LocationBox';
-import { Images } from '../../../assets/images';
 
 const Home = () => {
+  //
+
+  const navigation = useNavigation();
+
   return (
     <Layout showNavBar={false} layoutContainer={{ paddingHorizontal: 0 }}>
       <LocationBox />
@@ -43,7 +48,9 @@ const Home = () => {
         data={[1, 2, 3, 4]}
         horizontal
         contentContainerStyle={styles.contentStyle}
-        renderItem={({ item }) => <HomeCard />}
+        renderItem={({ item }) => (
+          <HomeCard onPress={() => navigation.navigate('FoodDetails')} />
+        )}
       />
       <View style={styles.ph}>
         <CustomText
@@ -56,7 +63,9 @@ const Home = () => {
         data={[1, 2, 3, 4]}
         horizontal
         contentContainerStyle={styles.contentStyle}
-        renderItem={({ item }) => <HomeCard />}
+        renderItem={({ item }) => (
+          <HomeCard onPress={() => navigation.navigate('FoodDetails')} />
+        )}
       />
       <View style={styles.ph}>
         <CustomText
@@ -69,7 +78,9 @@ const Home = () => {
         data={[1, 2, 3, 4]}
         horizontal
         contentContainerStyle={styles.contentStyle}
-        renderItem={({ item }) => <HomeCard />}
+        renderItem={({ item }) => (
+          <HomeCard onPress={() => navigation.navigate('FoodDetails')} />
+        )}
       />
       <View style={styles.ph}>
         <CustomText
@@ -82,7 +93,9 @@ const Home = () => {
         data={[1, 2, 3, 4]}
         horizontal
         contentContainerStyle={styles.contentStyle}
-        renderItem={({ item }) => <HomeCard />}
+        renderItem={({ item }) => (
+          <HomeCard onPress={() => navigation.navigate('FoodDetails')} />
+        )}
       />
       <View style={styles.ph}>
         <ImageBackground
@@ -110,7 +123,9 @@ const Home = () => {
         data={[1, 2, 3, 4]}
         horizontal
         contentContainerStyle={styles.contentStyle}
-        renderItem={({ item }) => <HomeCard isLike />}
+        renderItem={({ item }) => (
+          <HomeCard onPress={() => navigation.navigate('FoodDetails')} isLike />
+        )}
       />
     </Layout>
   );

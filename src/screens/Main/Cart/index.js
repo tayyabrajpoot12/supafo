@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import Layout from '../../../components/Layout';
 
 const Cart = () => {
   return (
-    <View>
-      <Text>Cart</Text>
-    </View>
+    <Layout title={'Sepet'}>
+      <View>
+        <Text>Cart</Text>
+      </View>
+    </Layout>
   );
 };
 

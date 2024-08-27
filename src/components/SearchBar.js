@@ -19,6 +19,7 @@ const SearchBar = ({
   editable,
   onFocus,
   disabled,
+  bc,
   autoFocus,
   onSearchPress = () => '',
 }) => {
@@ -27,7 +28,7 @@ const SearchBar = ({
       <Pressable
         onPress={onSearchPress}
         disabled={disabled}
-        style={styles.container}>
+        style={[styles.container, { borderColor: bc || colors.lightGrey }]}>
         <TouchableOpacity onPress={onSearchPress}>
           <Icons
             name="search"
@@ -67,6 +68,7 @@ const styles = StyleSheet.create({
     borderColor: colors.lightGrey,
     flex: 1,
     marginTop: 5,
+    backgroundColor: colors.white,
   },
   input: {
     color: colors.black,

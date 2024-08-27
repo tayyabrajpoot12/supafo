@@ -22,7 +22,7 @@ const TabIcon = ({ name, family, focused }) => (
     name={name}
     family={family}
     color={focused ? colors.primaryColor : colors.black}
-    size={name === 'home' ? 25 : 22}
+    size={name === 'location' ? 22 : 20}
   />
 );
 
@@ -34,13 +34,13 @@ const TabStack = () => {
         tabBarInactiveTintColor: colors.black,
         tabBarStyle: styles.tabBarStyle,
         headerShown: false,
-        tabBarLabelStyle: { fontSize: 12, fontFamily: fonts.medium, top: -4 },
+        tabBarLabelStyle: { fontSize: 12, fontFamily: fonts.medium, top: -6 },
         tabBarHideOnKeyboard: true,
       })}>
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} name={'home'} family={'Foundation'} />
+            <TabIcon focused={focused} name={'home'} family={'Feather'} />
           ),
           tabBarLabel: 'Anasayfa',
         }}
@@ -60,7 +60,7 @@ const TabStack = () => {
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon name="map-pin" family={'Feather'} focused={focused} />
+            <TabIcon name="location" family={'IonIcons'} focused={focused} />
           ),
           tabBarLabel: 'Keşfet',
         }}

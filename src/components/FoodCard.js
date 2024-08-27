@@ -11,81 +11,84 @@ import fonts from '../assets/fonts';
 import { colors } from '../utils/colors';
 import CustomText from './CustomText';
 import Icons from './Icons';
-import { Images, Currency } from '../assets/images';
+import { Images } from '../assets/images';
+import Currency from '../assets/images/Currency';
 
-const FoodCard = ({ item, isLike }) => {
+const FoodCard = ({ item, isLike, onPress }) => {
   return (
-    <ImageBackground
-      source={Images.food2}
-      imageStyle={styles.img}
-      style={styles.box}>
-      <View style={styles.backdrop} />
-      <View style={styles.innerBox}>
-        <View style={styles.row}>
-          <View style={styles.textBox}>
-            <CustomText
-              label={'Son 5'}
-              color={'#fff'}
-              fontFamily={fonts.semiBold}
-              fontSize={10}
-            />
-          </View>
-          <View style={styles.row1}>
-            <TouchableOpacity style={styles.icon} activeOpacity={0.5}>
-              <Icons
-                name={isLike ? 'heart' : 'heart-o'}
-                family={'FontAwesome'}
-                color={colors.orange}
-                size={14}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.icon, { paddingBottom: 4 }]}
-              activeOpacity={0.5}>
-              <Icons
-                name={'share-google'}
-                family={'EvilIcons'}
-                color={colors.green}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View>
-          <View style={styles.row1}>
-            <Image source={Images.company1} style={styles.logo} />
-            <CustomText
-              label={'Kahvaltılık'}
-              fontFamily={fonts.semiBold}
-              color={colors.white}
-            />
-          </View>
-          <View style={[styles.textBox, { marginVertical: 10 }]}>
-            <CustomText
-              label={'Bugün: 06:00-07:00'}
-              color={'#fff'}
-              fontFamily={fonts.semiBold}
-              fontSize={10}
-            />
-          </View>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+      <ImageBackground
+        source={Images.food2}
+        imageStyle={styles.img}
+        style={styles.box}>
+        <View style={styles.backdrop} />
+        <View style={styles.innerBox}>
           <View style={styles.row}>
-            <View style={styles.row1}>
-              <Icons name={'star'} color={colors.green} size={15} />
-              <CustomText label={4.9} color={colors.white} fontSize={12} />
-              <View style={styles.line} />
-              <CustomText label={'1 KM'} color={colors.white} fontSize={12} />
+            <View style={styles.textBox}>
+              <CustomText
+                label={'Son 5'}
+                color={'#fff'}
+                fontFamily={fonts.semiBold}
+                fontSize={10}
+              />
             </View>
             <View style={styles.row1}>
-              <Currency />
+              <TouchableOpacity style={styles.icon} activeOpacity={0.5}>
+                <Icons
+                  name={isLike ? 'heart' : 'heart-o'}
+                  family={'FontAwesome'}
+                  color={colors.orange}
+                  size={14}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.icon, { paddingBottom: 4 }]}
+                activeOpacity={0.5}>
+                <Icons
+                  name={'share-google'}
+                  family={'EvilIcons'}
+                  color={colors.green}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View>
+            <View style={styles.row1}>
+              <Image source={Images.company1} style={styles.logo} />
               <CustomText
-                label={'89.90'}
-                color={colors.white}
+                label={'Kahvaltılık'}
                 fontFamily={fonts.semiBold}
+                color={colors.white}
               />
+            </View>
+            <View style={[styles.textBox, { marginVertical: 10 }]}>
+              <CustomText
+                label={'Bugün: 06:00-07:00'}
+                color={'#fff'}
+                fontFamily={fonts.semiBold}
+                fontSize={10}
+              />
+            </View>
+            <View style={styles.row}>
+              <View style={styles.row1}>
+                <Icons name={'star'} color={colors.green} size={15} />
+                <CustomText label={4.9} color={colors.white} fontSize={12} />
+                <View style={styles.line} />
+                <CustomText label={'1 KM'} color={colors.white} fontSize={12} />
+              </View>
+              <View style={styles.row1}>
+                <Currency />
+                <CustomText
+                  label={'89.90'}
+                  color={colors.white}
+                  fontFamily={fonts.semiBold}
+                />
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    </ImageBackground>
+      </ImageBackground>
+    </TouchableOpacity>
   );
 };
 
