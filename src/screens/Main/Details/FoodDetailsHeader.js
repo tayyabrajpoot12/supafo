@@ -11,46 +11,57 @@ import CustomText from '../../../components/CustomText';
 import Icons from '../../../components/Icons';
 import { colors } from '../../../utils/colors';
 import fonts from '../../../assets/fonts';
+import { useNavigation } from '@react-navigation/native';
 
-const IconButton = ({ name, family, color, style }) => (
-  <TouchableOpacity style={[styles.icon, style]} activeOpacity={0.5}>
+const IconButton = ({ name, family, color, style, onPress }) => (
+  <TouchableOpacity
+    style={[styles.icon, style]}
+    activeOpacity={0.5}
+    onPress={onPress}>
     <Icons name={name} family={family} color={color} />
   </TouchableOpacity>
 );
 
-const FoodDetailsHeader = () => (
-  <ImageBackground source={Images.food1} style={styles.imgBox}>
-    <View style={styles.backdrop} />
-    <View style={styles.innerBox}>
-      <View style={styles.row}>
-        <IconButton name="arrowleft" family="AntDesign" />
-        <View style={styles.row1}>
+const FoodDetailsHeader = () => {
+  const navigation = useNavigation();
+  return (
+    <ImageBackground source={Images.food1} style={styles.imgBox}>
+      <View style={styles.backdrop} />
+      <View style={styles.innerBox}>
+        <View style={styles.row}>
           <IconButton
-            name="share-google"
-            family="EvilIcons"
-            color={colors.green}
+            name="arrowleft"
+            family="AntDesign"
+            onPress={() => navigation.goBack()}
           />
-          <IconButton
-            name="bag-outline"
-            family="IonIcons"
-            color={colors.primaryColor}
-          />
+          <View style={styles.row1}>
+            <IconButton
+              name="share-google"
+              family="EvilIcons"
+              color={colors.green}
+            />
+            <IconButton
+              name="bag-outline"
+              family="IonIcons"
+              color={colors.primaryColor}
+            />
+          </View>
+        </View>
+        <View style={styles.row}>
+          <View style={styles.row1}>
+            <Image source={Images.company2} style={styles.logo} />
+            <CustomText
+              label="Burger King"
+              fontFamily={fonts.semiBold}
+              color="#fff"
+            />
+          </View>
+          <IconButton name="heart" family="IonIcons" color={colors.orange} />
         </View>
       </View>
-      <View style={styles.row}>
-        <View style={styles.row1}>
-          <Image source={Images.company2} style={styles.logo} />
-          <CustomText
-            label="Burger King"
-            fontFamily={fonts.semiBold}
-            color="#fff"
-          />
-        </View>
-        <IconButton name="heart" family="IonIcons" color={colors.orange} />
-      </View>
-    </View>
-  </ImageBackground>
-);
+    </ImageBackground>
+  );
+};
 
 export default FoodDetailsHeader;
 

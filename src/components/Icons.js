@@ -3,6 +3,7 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import FontAwesome5Pro from 'react-native-vector-icons/FontAwesome5Pro';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Foundation from 'react-native-vector-icons/Foundation';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -35,6 +36,9 @@ const Icons = ({ family, name, color, size, ...props }) => {
       break;
     case 'FontAwesome5':
       Family = FontAwesome5;
+      break;
+    case 'FontAwesome6':
+      Family = FontAwesome6;
       break;
     case 'Fontisto':
       Family = Fontisto;

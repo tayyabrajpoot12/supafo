@@ -12,7 +12,7 @@ export const colors = {
   red: '#EF3826',
   green: '#66AE7B',
   yellow: '#fae314',
-  disabled: 'rgba(255,255,255,0.5)',
+  disabled: '#D9D9D9',
   tabIcon: '#bfbfbf',
   authText: '#343A40',
   orange: '#FF9200',

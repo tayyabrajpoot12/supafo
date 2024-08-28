@@ -9,6 +9,7 @@ export const Images = {
   noData: require('./noData.png'),
   mapPin: require('./mapPin.png'),
   donate: require('./donate.png'),
+  ingrediant: require('./ingrediant.png'),
 
   // temp images
   user: require('./user.png'),
