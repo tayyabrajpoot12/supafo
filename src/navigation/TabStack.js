@@ -29,10 +29,11 @@ const TabIcon = ({ name, family, focused }) => (
 const TabStack = () => {
   return (
     <Tab.Navigator
-      screenOptions={() => ({
+      screenOptions={({ route }) => ({
         tabBarActiveTintColor: colors.primaryColor,
         tabBarInactiveTintColor: colors.black,
-        tabBarStyle: styles.tabBarStyle,
+        tabBarStyle:
+          route.name === 'Cart' ? { display: 'none' } : styles.tabBarStyle,
         headerShown: false,
         tabBarLabelStyle: { fontSize: 12, fontFamily: fonts.medium, top: -6 },
         tabBarHideOnKeyboard: true,

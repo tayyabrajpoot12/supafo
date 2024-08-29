@@ -7,7 +7,7 @@ import { Images } from '../assets/images';
 import { colors } from '../utils/colors';
 import CustomText from './CustomText';
 
-const HealthModal = ({ visible, setVisible }) => {
+const GiftModal = ({ visible, setVisible }) => {
   const hideModal = () => setVisible(false);
   return (
     <Modal
@@ -17,16 +17,16 @@ const HealthModal = ({ visible, setVisible }) => {
       style={{ margin: 0 }}>
       <View style={styles.container}>
         <View style={styles.contentContainer}>
-          <Image source={Images.ingrediant} style={styles.img} />
+          <Image source={Images.gift} style={styles.img} />
           <CustomText
-            label={'Sağlığınız Bizim için Önemli'}
+            label={'Senin için Hediyemiz'}
             alignSelf={'center'}
             fontFamily={fonts.semiBold}
             marginBottom={20}
           />
           <CustomText
             label={
-              'Sürpriz paketimizin içeriği her zaman gizemli olduğu için önceden belirtmek mümkün değildir. Mağazamız, özel bir seçki ile paketinizi dolduracaktır. Alerjenler veya belirli içeriklerle ilgili sorularınız varsa, lütfen mağazaya sorun veya ödeme sayfasında sipariş notu olarak belirtiniz.'
+              'Mağaza, yiyecekleriniz için ambalaj sağlayacaktır. Bu ürünleri taşıman ve diğer alışverişlerinde de kullanabilmen için Supafo bez çanta HEDİYE!'
             }
             alignSelf={'center'}
             textAlign={'center'}
@@ -49,7 +49,7 @@ const HealthModal = ({ visible, setVisible }) => {
   );
 };
 
-export default HealthModal;
+export default GiftModal;
 
 const styles = StyleSheet.create({
   container: {
@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   img: {
-    width: 280,
-    height: 50,
+    width: 90,
+    height: 90,
     resizeMode: 'center',
     alignSelf: 'center',
     marginVertical: 20,

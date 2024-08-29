@@ -6,7 +6,7 @@ import { colors } from '../utils/colors';
 import CustomText from './CustomText';
 import Icons from './Icons';
 
-const Header = ({ title, isBack = true }) => {
+const Header = ({ title, isBack = true, rightIcon }) => {
   const navigation = useNavigation();
 
   return (
@@ -21,6 +21,7 @@ const Header = ({ title, isBack = true }) => {
       <View style={styles.textBox}>
         <CustomText label={title} fontFamily={fonts.medium} fontSize={18} />
       </View>
+      {rightIcon}
     </View>
   );
 };

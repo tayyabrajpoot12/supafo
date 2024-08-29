@@ -13,13 +13,14 @@ const MapScreen = () => {
   //
 
   const data = [
-    { latitude: 29.529684, longitude: 39.456417 },
-    { latitude: 24.529684, longitude: 49.456417 },
-    { latitude: 31.529684, longitude: 37.456417 },
-    { latitude: 34.529684, longitude: 42.456417 },
-    { latitude: 28.529684, longitude: 44.456417 },
-    { latitude: 26.529684, longitude: 36.456417 },
+    { latitude: 38.7205, longitude: 35.4826 },
+    { latitude: 37.9698, longitude: 34.6766 },
+    { latitude: 38.2065, longitude: 37.1931 },
+    { latitude: 37.0288, longitude: 35.8124 },
+    { latitude: 37.5753, longitude: 36.9228 },
+    { latitude: 37.8934, longitude: 35.5489 },
   ];
+
   const [viewType, setViewType] = useState(1);
   const [isEnabled, setIsEnabled] = useState(false);
 

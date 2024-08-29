@@ -9,6 +9,46 @@ import HomeCard from '../Home/HomeCard';
 const MapType = ({ data }) => {
   //
 
+  const customStyle = [
+    {
+      elementType: 'geometry',
+      stylers: [{ color: '#ffffff' }],
+    },
+    {
+      elementType: 'labels.text.fill',
+      stylers: [{ color: '#000000' }],
+    },
+    {
+      elementType: 'labels.text.stroke',
+      stylers: [{ color: '#ffffff' }],
+    },
+    {
+      featureType: 'road',
+      elementType: 'geometry',
+      stylers: [{ color: '#cccccc' }],
+    },
+    {
+      featureType: 'road',
+      elementType: 'geometry.stroke',
+      stylers: [{ color: '#b0b0b0' }],
+    },
+    {
+      featureType: 'administrative',
+      elementType: 'geometry',
+      stylers: [{ color: '#900000' }],
+    },
+    {
+      featureType: 'poi',
+      elementType: 'geometry',
+      stylers: [{ color: '#f5f5f5' }],
+    },
+    {
+      featureType: 'water',
+      elementType: 'geometry',
+      stylers: [{ color: '#a2d5f2' }],
+    },
+  ];
+
   const navigation = useNavigation();
 
   return (
@@ -17,11 +57,12 @@ const MapType = ({ data }) => {
         <MapView
           style={styles.mapView}
           initialRegion={{
-            latitude: 29.529684,
-            longitude: 39.456417,
-            latitudeDelta: 10.0922,
-            longitudeDelta: 10.0421,
-          }}>
+            latitude: 37.86373045410931,
+            longitude: 35.52392503246665,
+            latitudeDelta: 5.639168695628172,
+            longitudeDelta: 4.109210260212421,
+          }}
+          customMapStyle={customStyle}>
           {data.map((item, index) => (
             <Marker
               key={index}

@@ -4,6 +4,7 @@ import React from 'react';
 import TabStack from './TabStack';
 import FoodDetails from '../screens/Main/Details/FoodDetails';
 import ShopDetails from '../screens/Main/Details/ShopDetails';
+import Checkout from '../screens/Main/Checkout';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ const MainStack = () => {
       <Stack.Screen name="TabStack" component={TabStack} />
       <Stack.Screen name="FoodDetails" component={FoodDetails} />
       <Stack.Screen name="ShopDetails" component={ShopDetails} />
+      <Stack.Screen name="Checkout" component={Checkout} />
     </Stack.Navigator>
   );
 };

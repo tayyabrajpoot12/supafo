@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
   FlatList,
@@ -9,11 +10,12 @@ import {
 import fonts from '../../../assets/fonts';
 import Currency from '../../../assets/images/Currency';
 import CustomText from '../../../components/CustomText';
+import GiftModal from '../../../components/GiftModal';
+import HealthModal from '../../../components/HealthMessage';
 import Icons from '../../../components/Icons';
 import Layout from '../../../components/Layout';
 import { colors } from '../../../utils/colors';
 import FoodDetailsHeader from './FoodDetailsHeader';
-import HealthModal from '../../../components/HealthMessage';
 
 const InfoRow = ({
   icon,
@@ -34,10 +36,14 @@ const InfoRow = ({
   </View>
 );
 
+const buyOptions = ['Vejeteryan', 'Vegan', 'Glutensiz', 'Laktozsuz'];
+
 const FoodDetails = () => {
-  const buyOptions = ['Vejeteryan', 'Vegan', 'Glutensiz', 'Laktozsuz'];
+  const navigation = useNavigation();
+
   const [quantity, setQuantity] = useState(1);
   const [visible, setVisible] = useState(false);
+  const [giftModal, setGiftModal] = useState(false);
 
   const handleDecrement = () => setQuantity(prev => Math.max(prev - 1, 1));
   const handleIncrement = () => setQuantity(prev => prev + 1);
@@ -147,7 +153,9 @@ const FoodDetails = () => {
             label="Alerjenler ve İçerikler"
             fontFamily={fonts.medium}
           />
-          <TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => setVisible(true)}>
             <Icons
               name="questioncircle"
               family="AntDesign"
@@ -217,7 +225,9 @@ const FoodDetails = () => {
         </View>
         <View style={[styles.box, styles.row, { marginBottom: 20 }]}>
           <CustomText label="Taşıma şekli" fontFamily={fonts.medium} />
-          <TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => setGiftModal(true)}>
             <Icons
               name="questioncircle"
               family="AntDesign"
@@ -260,7 +270,9 @@ const FoodDetails = () => {
             />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => navigation.navigate('Cart')}>
           <CustomText
             label="Sepete Ekle"
             fontFamily={fonts.medium}
@@ -269,6 +281,7 @@ const FoodDetails = () => {
         </TouchableOpacity>
       </View>
       <HealthModal visible={visible} setVisible={setVisible} />
+      <GiftModal visible={giftModal} setVisible={setGiftModal} />
     </Layout>
   );
 };
@@ -305,15 +318,13 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     elevation: 20,
     backgroundColor: colors.white,
-    borderWidth: 1,
+    borderWidth: 1.5,
     paddingHorizontal: 20,
     paddingVertical: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderTopColor: '#00000033',
-    borderLeftColor: colors.white,
-    borderRightColor: colors.white,
+    borderColor: '#00000033',
   },
   btn: {
     backgroundColor: colors.green,
