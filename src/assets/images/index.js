@@ -19,6 +19,8 @@ export const Images = {
   food3: require('./food3.png'),
   company1: require('./company1.png'),
   company2: require('./company2.png'),
+  qr: require('./qr.png'),
+  success: require('./success.png'),
 };
 
 // svgs ---------------------------

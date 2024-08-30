@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import fonts from '../../../assets/fonts';
@@ -6,6 +7,7 @@ import CustomButton from '../../../components/CustomButton';
 import CustomText from '../../../components/CustomText';
 
 const MessageBox = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Image source={Images.logo} style={styles.img} />
@@ -17,7 +19,10 @@ const MessageBox = () => {
         alignSelf={'center'}
         marginBottom={80}
       />
-      <CustomButton title={'Sürpriz Paketleri Keşfet'} />
+      <CustomButton
+        title={'Sürpriz Paketleri Keşfet'}
+        onPress={() => navigation.navigate('Home')}
+      />
     </View>
   );
 };

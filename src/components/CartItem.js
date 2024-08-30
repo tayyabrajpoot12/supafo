@@ -13,7 +13,7 @@ import CustomText from './CustomText';
 import Icons from './Icons';
 import Currency from '../assets/images/Currency';
 
-const CartItem = () => {
+const CartItem = ({ item, onPress }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleDecrement = () => setQuantity(prev => Math.max(prev - 1, 1));
@@ -31,7 +31,10 @@ const CartItem = () => {
             fontFamily={fonts.medium}
             fontSize={13}
           />
-          <TouchableOpacity style={styles.row1} activeOpacity={0.5}>
+          <TouchableOpacity
+            style={styles.row1}
+            activeOpacity={0.5}
+            onPress={onPress}>
             <CustomText
               label={'Detaya Git'}
               fontFamily={fonts.semiBold}

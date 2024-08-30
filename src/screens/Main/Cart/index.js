@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 
-import { useNavigation } from '@react-navigation/native';
 import Currency from '../../../assets/images/Currency';
 import CartItem from '../../../components/CartItem';
 import CustomButton from '../../../components/CustomButton';
@@ -15,7 +15,8 @@ import MessageBox from './MessageBox';
 const Cart = () => {
   //
   const navigation = useNavigation();
-  const [data, setData] = useState([1, 2, 3, 4, 5]);
+  const isFocused = useIsFocused();
+  const [data, setData] = useState([1, 2, 3, 4]);
 
   const renderHiddenItem = ({ item }) => (
     <View style={styles.rowBack}>
@@ -24,6 +25,10 @@ const Cart = () => {
       </TouchableOpacity>
     </View>
   );
+
+  useEffect(() => {
+    setData([1, 2, 3, 4]);
+  }, [isFocused]);
 
   return (
     <Layout
@@ -46,7 +51,9 @@ const Cart = () => {
           rightOpenValue={-75}
           previewRowKey={'0'}
           renderHiddenItem={renderHiddenItem}
-          renderItem={() => <CartItem />}
+          renderItem={() => (
+            <CartItem onPress={() => navigation.navigate('FoodDetails')} />
+          )}
           ItemSeparatorComponent={<View style={styles.seprator} />}
         />
       </ScrollView>
